@@ -68,9 +68,7 @@ fetchDrugs();
 
 <template>
   <UContainer class="flex flex-col py-8">
-    <h1 class="text-4xl text-primary font-bold mb-6 mx-auto">
-      OpenFDA Drug List
-    </h1>
+    <h1 class="text-4xl text-primary font-bold mb-6 mx-auto">OpenFDA</h1>
     <SearchFilters
       :activeIngredients="activeIngredients"
       :routes="routes"
@@ -83,7 +81,7 @@ fetchDrugs();
         </li>
       </ul>
     </div>
-    <div v-else-if="isErrored">Unexpected Errror</div>
+    <div v-else-if="isErrored">Unexpected Error</div>
     <div v-else-if="!drugs?.results || drugs.results.length === 0">
       No results found
     </div>
