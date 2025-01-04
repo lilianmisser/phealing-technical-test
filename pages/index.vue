@@ -67,15 +67,15 @@ fetchDrugs();
 </script>
 
 <template>
-  <div class="container mx-auto mt-4 mb-16">
-    <h1 class="text-5xl font-bold mb-10">OpenFDA Drug List</h1>
-    <div class="flex flex-col md:flex-row gap-2 mb-4">
-      <SearchFilters
-        :activeIngredients="activeIngredients"
-        :routes="routes"
-        :searchState="searchState"
-      />
-    </div>
+  <UContainer class="flex flex-col py-8">
+    <h1 class="text-4xl text-primary font-bold mb-6 mx-auto">
+      OpenFDA Drug List
+    </h1>
+    <SearchFilters
+      :activeIngredients="activeIngredients"
+      :routes="routes"
+      :searchState="searchState"
+    />
     <div v-if="isLoading">
       <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <li v-for="n in 12" :key="n">
@@ -88,7 +88,7 @@ fetchDrugs();
       No results found
     </div>
     <div v-else>
-      <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <li v-for="drug in drugs.results" :key="drug.id">
           <DrugCard :drug="drug" />
         </li>
@@ -96,12 +96,12 @@ fetchDrugs();
       <div class="w-full flex mt-4">
         <UPagination
           class="mx-auto"
-          size="lg"
+          size="md"
           v-model="searchState.page"
           :page-count="12"
           :total="maxEntries"
         />
       </div>
     </div>
-  </div>
+  </UContainer>
 </template>

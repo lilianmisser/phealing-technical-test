@@ -20,9 +20,7 @@ const props = defineProps<{
     >
       <template #header>
         <div class="flex items-center justify-between">
-          <h3
-            class="text-base font-semibold leading-6 text-gray-900 dark:text-white"
-          >
+          <h3 class="text-xl font-bold leading-6">
             {{ drug.genericName }}
           </h3>
           <UButton
@@ -36,27 +34,50 @@ const props = defineProps<{
       </template>
       <section class="flex flex-col gap-4">
         <div class="text-sm">
-          <p class="font-bold">Generic Name</p>
+          <p class="font-medium text-gray-600">Generic Name</p>
           <p>{{ drug.genericName }}</p>
         </div>
         <div class="text-sm">
-          <p class="font-bold">Brand Name</p>
+          <p class="font-medium text-gray-600">Brand Name</p>
           <p>{{ drug.brandName }}</p>
         </div>
         <div class="text-sm">
-          <p class="font-bold">Manufacturer</p>
+          <p class="font-medium text-gray-600">Manufacturer</p>
           <p>{{ drug.brandName }}</p>
         </div>
         <div class="text-sm">
-          <p class="font-bold">Active Substances</p>
-          <p>{{ drug.activeIngredients.map((ai) => ai.name).join(", ") }}</p>
+          <p class="font-medium text-gray-600">Active Substances</p>
+          <ul class="flex flex-row flex-wrap gap-1 mt-1">
+            <li
+              v-for="activeIngredient in drug.activeIngredients"
+              :key="activeIngredient.name"
+            >
+              <UBadge
+                color="gray"
+                variant="solid"
+                :ui="{ rounded: 'rounded-full' }"
+                ><span class="whitespace-nowrap">{{
+                  activeIngredient.name
+                }}</span></UBadge
+              >
+            </li>
+          </ul>
         </div>
         <div class="text-sm">
-          <p class="font-bold">Administration Routes</p>
-          <p>{{ drug.routes.join(", ") }}</p>
+          <p class="font-medium text-gray-600">Administration Routes</p>
+          <ul class="flex flex-row gap-1 mt-1">
+            <li v-for="route in drug.routes" :key="route">
+              <UBadge
+                color="gray"
+                variant="solid"
+                :ui="{ rounded: 'rounded-full' }"
+                >{{ route }}</UBadge
+              >
+            </li>
+          </ul>
         </div>
         <div class="text-sm">
-          <p class="font-bold">Packaging</p>
+          <p class="font-medium text-gray-600">Packaging</p>
           <p>{{ drug.packaging.map((p) => p.description).join(", ") }}</p>
         </div>
       </section>

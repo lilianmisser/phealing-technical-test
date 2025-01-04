@@ -15,34 +15,55 @@ defineProps<{ drug: Drug }>();
 </script>
 
 <template>
-  <UCard class="h-64">
-    <template #header>
-      <div class="flex items-center gap-2">
-        <span class="font-bold text-lg truncate">{{ drug.genericName }}</span>
-        <UButton
-          @click="openSlideOver"
-          variant="ghost"
-          icon="i-material-symbols:search"
-          size="sm"
-        />
+  <UCard class="h-80 hover:shadow-lg transition-shadow">
+    <div class="flex items-center mb-2 gap-2">
+      <span class="font-bold text-xl truncate">{{ drug.genericName }}</span>
+      <UButton
+        @click="openSlideOver"
+        class="ml-auto"
+        variant="ghost"
+        color="gray"
+        icon="i-rivet-icons:magnifying-glass"
+        size="sm"
+      />
+    </div>
+    <div class="space-y-2 text-sm">
+      <div class="flex flex-col">
+        <span class="font-medium text-gray-600 mb-2">Manufacturer</span>
+        <span>{{ drug.labelerName }}</span>
       </div>
-    </template>
-    <div class="grid gap-2 text-sm">
-      <div class="grid grid-cols-3 gap-1">
-        <span class="font-medium">Manufacturer</span>
-        <span class="col-span-2">{{ drug.labelerName }}</span>
+      <div>
+        <span class="text-sm font-medium text-gray-600"
+          >Administration Routes</span
+        >
+        <ul class="flex flex-row gap-1 mt-2">
+          <li v-for="route in drug.routes" :key="route">
+            <UBadge
+              color="gray"
+              variant="solid"
+              :ui="{ rounded: 'rounded-full' }"
+              >{{ route }}</UBadge
+            >
+          </li>
+        </ul>
       </div>
-      <div class="grid grid-cols-3 gap-1">
-        <span class="font-medium">Route</span>
-        <span class="col-span-2">{{ drug.routes.join(", ") }}</span>
-      </div>
-      <div class="grid grid-cols-3 gap-1">
-        <span class="font-medium">Active Ingredients</span>
-        <span class="col-span-2">{{
-          drug.activeIngredients
-            ? drug.activeIngredients.map((ai) => ai.name).join(", ")
-            : ""
-        }}</span>
+      <div>
+        <span class="font-medium text-gray-600">Active Ingredients</span>
+        <ul class="flex flex-row flex-wrap gap-1 mt-2">
+          <li
+            v-for="activeIngredient in drug.activeIngredients"
+            :key="activeIngredient.name"
+          >
+            <UBadge
+              color="gray"
+              variant="solid"
+              :ui="{ rounded: 'rounded-full' }"
+              ><span class="whitespace-nowrap">{{
+                activeIngredient.name
+              }}</span></UBadge
+            >
+          </li>
+        </ul>
       </div>
     </div>
   </UCard>
