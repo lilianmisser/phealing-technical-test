@@ -33,7 +33,7 @@ const props = defineProps<{
       v-if="props.routes !== null"
       v-model="props.searchState.filters.routes"
       :options="props.routes.map((r) => r.term)"
-      placeholder="Select Routes"
+      placeholder="Select Administration Routes"
       searchable
       multiple
       size="md"
