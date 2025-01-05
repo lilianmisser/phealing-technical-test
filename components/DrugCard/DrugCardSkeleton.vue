@@ -1,5 +1,5 @@
 <template>
-  <UCard class="h-64">
+  <UCard class="h-80">
     <template #header>
       <USkeleton class="h-4 w-full" />
     </template>

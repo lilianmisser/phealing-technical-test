@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import DrugCardSkeleton from "~/components/DrugCard/DrugCardSkeleton.vue";
 import SearchFilters from "~/components/SearchFilters.vue";
 import { MAX_SKIP_VALUE } from "~/constants/general";
 import type { Drug } from "~/types/Drug";
