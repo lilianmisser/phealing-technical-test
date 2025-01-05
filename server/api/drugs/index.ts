@@ -49,7 +49,7 @@ export default defineEventHandler(async (event) => {
 
   const searchQuery = buildSearchParams(active_ingredients, routes);
 
-  // Search Query is appended manually because its syntax gets encoded differently if its appended in url search params
+  // Search Query is appended manually because its syntax gets encoded differently when its appended in UrlSearchParams
   const apiUrl = `${
     config.public.openFdaApiUrl
   }?search=${searchQuery}&${params.toString()}`;
