@@ -26,7 +26,6 @@ const props = defineProps<{
           class="truncate"
           >{{ props.searchState.filters.activeIngredients.join(", ") }}</span
         >
-        <span v-else>Select Active Ingredients</span>
       </template></USelectMenu
     >
     <USelectMenu
@@ -43,7 +42,6 @@ const props = defineProps<{
         <span v-if="props.searchState.filters.routes.length" class="truncate">{{
           props.searchState.filters.routes.join(", ")
         }}</span>
-        <span v-else>Select Routes</span>
       </template>
     </USelectMenu>
   </div>
